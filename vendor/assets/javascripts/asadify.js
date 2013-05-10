@@ -1,9 +1,8 @@
 var Asadify = {
   me: function() {
     console.log("Initializing!");
-    //create elements on page
+
     this.createAsad();
-    //give elements behavior
     this.giveAsadBehavior();
   },
   asad: null,
@@ -21,35 +20,49 @@ var Asadify = {
     delete this.asad;
   },
   placeAsad: function() {
-    var position = Math.floor(Math.random() * 4);
-    this.asad.data('pos', position); //0-1-2-3, 0 is top, clockwise
+    var currentPosition = this.position;
+    var possiblePositions = [0, 1, 2, 3];
+    var index = possiblePositions.indexOf(currentPosition);
+    if(index != -1) {
+      possiblePositions.splice(index, 1);
+    }
+    var position = possiblePositions[Math.floor(Math.random() * possiblePositions.length)];
+    this.position = position; //0-1-2-3, 0 is top, clockwise
   },
   drawAsad: function() {
     var asad = this.asad;
-    asad.css("width", 50);
-    asad.css("height", 50);
+    asad.css("width", 84);
+    asad.css("height", 138);
     asad.css("z-index", 999);
-    asad.css("background-color", "red");
+    asad.css("background-image", "url('/assets/asad-final-scaled.png')");
     asad.css("position", "fixed");
-    //should eventually check for position and place accordingly
-    switch(asad.data('pos')) {
+    var rotate;
+    switch(this.position) {
       case 0:
-        asad.css("top", 0);
+        asad.css("top", -73);
         asad.css("right", 50);
+        rotate = 180;
         break;
       case 1:
-        asad.css("right", 0);
+        asad.css("right", -50);
         asad.css("bottom", 50);
+        rotate = -90;
         break;
       case 2:
-        asad.css("bottom", 0);
+        asad.css("bottom", -78);
         asad.css("left", 50);
+        rotate = 0;
         break;
       case 3:
         asad.css("top", 50);
-        asad.css("left", 0);
+        asad.css("left", -50);
+        rotate = 90;
         break;
     }
+
+    asad.css("transform", "rotate(" + rotate + "deg)");
+    asad.css("-ms-transform", "rotate(" + rotate + "deg)");
+    asad.css("-webkit-transform", "rotate(" + rotate + "deg)");
   },
   giveAsadBehavior: function() {
     console.log("Giving Asad Behavior!");
@@ -64,20 +77,21 @@ var Asadify = {
   },
   animateAsad: function(callback) {
     console.log("Animating Asad!");
+
     var that = this;
     var asad = this.asad;
-    switch(asad.data('pos')) {
+    switch(this.position) {
       case 0:
-        asad.animate({top: '-50px'}, 400, 'linear', callback);
+        asad.animate({top: '-134px'}, 400, 'linear', callback);
         break;
       case 1:
-        asad.animate({right: '-50px'}, 400, 'linear', callback);
+        asad.animate({right: '-107px'}, 400, 'linear', callback);
         break;
       case 2:
-        asad.animate({bottom: '-50px'}, 400, 'linear', callback);
+        asad.animate({bottom: '-134px'}, 400, 'linear', callback);
         break;
       case 3:
-        asad.animate({left: '-50px'}, 400, 'linear', callback);
+        asad.animate({left: '-107px'}, 400, 'linear', callback);
         break;
     }
   },
