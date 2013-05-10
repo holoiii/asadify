@@ -2,7 +2,7 @@ var Asadify = {
   me: function() {
     console.log("Initializing!");
 
-    this.rebuildAsad();
+    this.mouseTimer(this.rebuildAsad, 5000); //call rebuildAsad whenever mouse doesn't move for 5 seconds
   },
   asad: null,
   createAsad: function() {
@@ -70,10 +70,7 @@ var Asadify = {
 
     var that = this;
     this.asad.hover(function(e) {
-      that.animateAsad(function() {
-        //sleep some time, wait random seconds after mouse stops moving then rebuild
-        that.rebuildAsad();
-      });
+      that.animateAsad(that.destroyAsad);
     })
   },
   animateAsad: function(callback) {
@@ -97,16 +94,13 @@ var Asadify = {
     }
   },
   rebuildAsad: function() {
-    var that = this;
-    this.mouseTimer(function() {
-      that.destroyAsad();
-      that.createAsad();
-      that.giveAsadBehavior();
-    })
+    this.destroyAsad();
+    this.createAsad();
+    this.giveAsadBehavior();
   },
-  mouseTimer: function(callback) {
+  mouseTimer: function(callback, duration) {
     //stub for now
-    callback();
+    callback.apply(this);
   }
 }
 
