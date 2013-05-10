@@ -97,9 +97,16 @@ var Asadify = {
     }
   },
   rebuildAsad: function() {
-    this.destroyAsad();
-    this.createAsad();
-    this.giveAsadBehavior();
+    var that = this;
+    this.mouseTimer(function() {
+      that.destroyAsad();
+      that.createAsad();
+      that.giveAsadBehavior();
+    })
+  },
+  mouseTimer: function(callback) {
+    //stub for now
+    callback();
   }
 }
 
