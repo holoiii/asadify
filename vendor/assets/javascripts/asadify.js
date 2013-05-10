@@ -56,13 +56,30 @@ var Asadify = {
 
     var that = this;
     this.asad.hover(function(e) {
-      that.animateAsad();
-      //sleep some time, wait random seconds after mouse stops moving then rebuild
-      that.rebuildAsad();
+      that.animateAsad(function() {
+        //sleep some time, wait random seconds after mouse stops moving then rebuild
+        that.rebuildAsad();
+      });
     })
   },
-  animateAsad: function() {
+  animateAsad: function(callback) {
     console.log("Animating Asad!");
+    var that = this;
+    var asad = this.asad;
+    switch(asad.data('pos')) {
+      case 0:
+        asad.animate({top: '-50px'}, 400, 'linear', callback);
+        break;
+      case 1:
+        asad.animate({right: '-50px'}, 400, 'linear', callback);
+        break;
+      case 2:
+        asad.animate({bottom: '-50px'}, 400, 'linear', callback);
+        break;
+      case 3:
+        asad.animate({left: '-50px'}, 400, 'linear', callback);
+        break;
+    }
   },
   rebuildAsad: function() {
     this.destroyAsad();
