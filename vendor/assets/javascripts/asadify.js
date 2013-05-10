@@ -2,8 +2,7 @@ var Asadify = {
   me: function() {
     console.log("Initializing!");
 
-    this.createAsad();
-    this.giveAsadBehavior();
+    this.rebuildAsad();
   },
   asad: null,
   createAsad: function() {
@@ -16,8 +15,10 @@ var Asadify = {
     $("body").append(this.asad);
   },
   destroyAsad: function() {
-    this.asad.remove();
-    delete this.asad;
+    if(this.asad != undefined) {
+      this.asad.remove();
+      delete this.asad;
+    }
   },
   placeAsad: function() {
     var currentPosition = this.position;
@@ -33,7 +34,7 @@ var Asadify = {
     var asad = this.asad;
     asad.css("width", 84);
     asad.css("height", 138);
-    asad.css("z-index", 999);
+    asad.css("z-index", 9999);
     asad.css("background-image", "url('/assets/asad-final-scaled.png')");
     asad.css("position", "fixed");
     var rotate;
