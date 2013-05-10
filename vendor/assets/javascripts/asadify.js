@@ -105,4 +105,3 @@ var Asadify = {
 }
 
 //Have a timer for when asad shows up, maybe when the mouse doesn't move for 20 seconds
-Asadify.me();
