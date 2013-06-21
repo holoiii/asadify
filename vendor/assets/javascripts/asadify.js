@@ -43,7 +43,7 @@ var Asadify = (function ($){
       name: "zach",
       url: "url('/assets/zach-final-scaled.png')",
       width: 167,
-      height: 83,
+      height: 199,
       positionOffsets: [
         {top: -5, left: 50, rotate: 180 },
         {right: -45, top: 50, rotate: -90},
