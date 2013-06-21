@@ -50,6 +50,18 @@ var Asadify = (function ($){
         {bottom: -5, right: 50, rotate: 0},
         {bottom: 92, left: -50, rotate: 90}
       ]
+    },
+    {
+      name: "abber",
+      url: "url('/assets/abber-final-scaled.png')",
+      width: 168,
+      height: 175,
+      positionOffsets: [
+        {top: -5, left: 50, rotate: 180 },
+        {right: -45, top: 50, rotate: -90},
+        {bottom: -5, right: 50, rotate: 0},
+        {bottom: 92, left: -50, rotate: 90}
+      ]
     }
   ];
 
