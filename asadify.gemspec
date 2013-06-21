@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "asadify"
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Albert Peng"]
-  s.date = "2013-05-10"
+  s.date = "2013-06-21"
   s.description = "Asadify your site."
   s.email = "albert.peng@cureus.com"
   s.extra_rdoc_files = [
@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
     "asadify.gemspec",
     "lib/asadify.rb",
     "vendor/assets/images/asad-final-scaled.png",
+    "vendor/assets/images/chris-final-scaled.png",
     "vendor/assets/javascripts/asadify.js"
   ]
   s.homepage = "http://github.com/holoiii/asadify"
