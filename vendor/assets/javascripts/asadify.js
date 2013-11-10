@@ -93,16 +93,12 @@ var Asadify = (function ($){
    * call Asadify.me() to get things started
    */
   me = function() { 
-    console.log("Initializing!");
-
     mouseTimer(rebuildCharacter, 5000); //call rebuildAsad whenever mouse doesn't move for 5 seconds
   }
 
   //private
 
   animateCharacter = function(callback) {
-    console.log("Animating Character!");
-
     switch(position) {
       case 0:
         person.animate({top: '-134px'}, 400, 'linear', callback);
@@ -120,8 +116,6 @@ var Asadify = (function ($){
   }
 
   createCharacter = function() {
-    console.log("Creating Character!");
-
     person = $("<div class='cool-asad'></div>");
     current_character = chooseCharacter();
 
@@ -132,7 +126,6 @@ var Asadify = (function ($){
   }
 
   chooseCharacter = function (){
-    console.log("choosing character => ");
     return characters[Math.round((characters.length-1) * Math.random())];
   }
 
@@ -158,8 +151,7 @@ var Asadify = (function ($){
 
   drawCharacter = function() {
     var rotate, transforms;
-    console.log("Drawing character. Current character is -> " + current_character.name);
-    
+
     person.css("width", current_character.width);
     person.css("height", current_character.height);
     person.css("z-index", 9999);
@@ -180,8 +172,6 @@ var Asadify = (function ($){
   }
 
   giveCharacterBehavior = function() {
-    console.log("Giving Asadable Behavior!");
-
     person.hover(function(e) {
       animateCharacter(destroyCharacter);
     });
@@ -196,14 +186,6 @@ var Asadify = (function ($){
   //stub for now
   mouseTimer = function(callback, duration) {
     callback();
-    //callback.apply(this);
-    //$(window).on('mousemove', function (){
-    //  if(timerId) { 
-    //    window.clearInterval(timerId); 
-    //    timerId = null;
-    //  }
-    //  timerId = window.setInterval(callback, duration);
-    //});
   }
 
   return {
